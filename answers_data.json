@@ -1,0 +1,38 @@
+{
+  "authorized_abu_usernames": [
+    "abunya",
+    "JamesGordon"
+  ],
+  "commands": {
+    "thx": "Спасибо,?\\s*Абу",
+    "abu": "/abu(\\s|$)",
+    "ban": "/ban(\\s|$)",
+    "postcount": "/postcount(\\s|$)"
+  },
+  "specials": {
+     "abu": "*##Abu##*",
+     "thx": "_Абу благословил этот пост._",
+     "ban": "_Автор этого поста был забанен. Помянем._"
+  },
+
+  "postcount": {
+    "placeholders": {
+      "count": "%\\(count\\)",
+      "status": "%\\(status\\)"
+    },
+    "template": {
+      "threads_count": "_Количество созданных тредов: %(count)._",
+      "posts_count": "_Количество постов: %(count)._",
+      "online_days": "_Онлайн: %(count) дней._",
+      "status": "_Ваш статус: %(status)._"
+    },
+    "statuses": [
+      "Ньюфаг",
+      "Олдфаг",
+      "Хикка",
+      "Школьник",
+      "Быдлостудент",
+      "Хач"
+    ]
+  }
+}
