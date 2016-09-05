@@ -68,7 +68,32 @@ test('Ban test', function(t){
 	t.end()
 })
 
-test('Postcount test')
-/*
-TODO: -postcount
+test('Postcount test', function(t){
+	//TODO
+	var post = new RegExp(/_Количество созданных тредов: (\d)+\._\n_Количество постов: (\d)+\._\n_Онлайн: (\d)+ дней\._\n_Ваш статус: (Ньюфаг|Олдфаг|Хикка|Школьник|Быдлостудент|Хач)\._/, 'g');
+	var text = answerBuilder.buildAnswer({username: undefined, text: "/postcount"}).text
+	t.ok(post.test(text), 'Postcount test - \n'+text+'\n is bad postcount template')
+	t.end()
+})
+
+test('Combinations test', function(t){
+	//TODO
+	/*
+									|abu(auth only)|thx|ban|postcount|italic|bold|spoiler|
+	|abu(auth only)-|-----------------------
+	|-------thx-----|
+	|------ban------|
+	|---postcount---|
+	|-----italic----|
+	|------bold-----|
+	|----spoiler----|
 */
+	for(var i in data.authorized_abu_usernames) {
+		t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "/abu Спасибо Абу"}).text, "*##Abu##* Спасибо Абу\n\n_Абу благословил этот пост._", "Combinations - abu + thx")
+		t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "/abu /ban"}).text, "*##Abu##* \n\n_Автор этого поста был забанен. Помянем._", "Combinations - abu + ban")
+		//TODO: postcount
+		//t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: ""}))
+		//....
+	}
+	t.end()
+})
