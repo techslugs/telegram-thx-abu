@@ -1,4 +1,4 @@
-## Latin2ru Telegram Bot
+## TnxAbu Telegram Bot
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
