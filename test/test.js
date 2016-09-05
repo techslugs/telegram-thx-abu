@@ -39,6 +39,10 @@ test('##Abu## test', function(t){
 	for(var i in data.authorized_abu_usernames) {
 			t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "/abu goj"}).text, "*##Abu##* goj", "Authorized username - "+data.authorized_abu_usernames[i])
 			t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "/abu "}).text, "*##Abu##* ", "Authorized username - "+data.authorized_abu_usernames[i])
+			t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "/abu /abu"}).text, "*##Abu##* *##Abu##*", "Authorized username - "+data.authorized_abu_usernames[i])
+			t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "text /abu text /abu text"}).text, "text *##Abu##* text *##Abu##* text", "Authorized username - "+data.authorized_abu_usernames[i])
+			t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "/abu /abu /abu"}).text, "*##Abu##* *##Abu##* *##Abu##*", "Authorized username - "+data.authorized_abu_usernames[i])
+			t.deepEqual(answerBuilder.buildAnswer({username: data.authorized_abu_usernames[i], text: "/abu"}).text, "*##Abu##*", "Authorized username - "+data.authorized_abu_usernames[i])
 		}
 	t.deepEqual(answerBuilder.buildAnswer({username: "unauthorized", text: "/abu goj"}).text, "/abu goj", 'Unauthorized username - text should not be translated')
 	t.end()
@@ -54,8 +58,17 @@ test('thx Abu test', function(t){
 	t.deepEqual(answerBuilder.buildAnswer({username: undefined, text: "text Спасибо Абу text"}).text, "text Спасибо Абу text\n\n_Абу благословил этот пост._", "Bad \"Thx Abu\" text - in text")
 	t.end()
 })
+
+test('Ban test', function(t){
+	t.deepEqual(answerBuilder.buildAnswer({username: undefined, text: "/ban text"}).text, " text\n\n_Автор этого поста был забанен. Помянем._", 'Bad ban test')
+	t.deepEqual(answerBuilder.buildAnswer({username: undefined, text: "/ban /ban"}).text, " \n\n_Автор этого поста был забанен. Помянем._", 'Bad ban test')
+	t.deepEqual(answerBuilder.buildAnswer({username: undefined, text: "text /ban text /ban text"}).text, "text  text  text\n\n_Автор этого поста был забанен. Помянем._", 'Bad ban test')
+	t.deepEqual(answerBuilder.buildAnswer({username: undefined, text: "/ban"}).text, "\n\n_Автор этого поста был забанен. Помянем._", 'Bad ban test')
+	t.deepEqual(answerBuilder.buildAnswer({username: undefined, text: "/ban "}).text, " \n\n_Автор этого поста был забанен. Помянем._", 'Bad ban test')
+	t.end()
+})
+
+test('Postcount test')
 /*
-TODO: 
-	-ban
-	-postcount
+TODO: -postcount
 */
