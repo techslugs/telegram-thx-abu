@@ -1,0 +1,12 @@
+{
+  "name": "Thx-Abu-Telegram-Bot",
+  "description": "Inline imageboard syntax helper",
+  "repository": "https://github.com/techslugs/telegram-thx-abu/",
+  "keywords": ["inline", "bot", "telegram"],
+  "env": {
+    "TELEGRAM_TOKEN": {
+      "description": "Telegram HTTP bot API authentication token",
+      "value": "TOKEN_FROM_BOTFATHER"
+    }
+  }
+}
